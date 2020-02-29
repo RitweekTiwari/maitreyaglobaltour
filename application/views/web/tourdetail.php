@@ -282,6 +282,7 @@
 														<textarea name="message" cols="40" rows="10" class="wpcf7-form-control" aria-invalid="false" placeholder="Message"></textarea>
 													</div>
 													<input type="hidden" name="tourId" value="<?php echo $tourdata['id'] ?>">
+													<input type="hidden" name="tourname" value="<?php echo $tourdata['title'] ?>">
 													<input class="btn-booking btn" value="Send Enquiry" type="submit">
 													<input type="hidden" id="get_csrf_hash" name="<?php echo $this->security->get_csrf_token_name();?>" value="<?php echo $this->security->get_csrf_hash();?>">
 												</form>

@@ -139,7 +139,8 @@ class Home extends CI_Controller {
                 'message'=> $_POST['message'],
                 'tourId'=> $_POST['tourId']
             );
-           
+            $tourname =$_POST['tourname'];
+           self::send_email($data,$tourname);
             $status=$this->common_model->insert($data,'enquiry');
             // echo $status; exit();
             if ($status == true) {
@@ -153,6 +154,33 @@ class Home extends CI_Controller {
         $data['setting'] = $this->common_model->select_single_row('setting');
         $data['main_content'] = $this->load->view('web/tourdetail', $data, TRUE);
         $this->load->view('web/index', $data);
+    }
+
+    public function send_email($data,$tourname) {
+         
+            $data['tourname']=$tourname;
+          
+      
+          $config = Array(
+            'protocol' => 'smtp',
+            'smtp_host' => 'ssl://smtp.googlemail.com',
+            'smtp_port' => 465,
+            'smtp_user' => 'info@rectorsol.com', // change it to yours
+            'smtp_pass' => 'shash#13', // change it to yours
+            'mailtype' => 'html',
+            'charset' => 'iso-8859-1',
+            'wordwrap' => TRUE
+            );
+          $this->email->set_header('MIME-Version', '1.0; charset=utf-8');
+          $this->load->library('email', $config);
+          $this->email->set_newline("\r\n");
+          $this->email->from('info@rectorsol.com'); // change it to yours
+          $this->email->to('info@rectorsol.com');// change it to yours
+          $this->email->subject("Booking Enquiry");
+          $this->email->set_mailtype('html');
+         // $msg=$this->load->view('join/email');
+          $this->email->message($this->load->view('web/email',$data,TRUE)); 
+          $this->email->send();
     }
 
     public function byCategorytourlist($categoryName){

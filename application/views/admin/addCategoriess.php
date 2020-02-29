@@ -99,7 +99,7 @@
                           <th>Sr.no</th>
                           <th>CategoryName</th>
                           <th>Image</th>
-                          <th>Status</th>
+                       
                           <th>Actions</th>
                         </tr>
                       </thead>
@@ -112,9 +112,7 @@
                               <td>
                                 <img src="<?php echo base_url('/uploads/categoryImg/')?><?php echo $value['category_img'] ?>" alt="image" style="height: 50px; width: 50px;">
                               </td>
-                              <td>
-                                <label class="badge badge-info">On hold</label>
-                              </td>
+                              
                               <td>
                                 <button href="javascript:void(0)" onclick="edit(<?php echo $value['id'];?>)" class="btn btn-outline-primary"><i class="fa fa-pencil-square"></i></button>
                                 <button class="btn btn-outline-danger" href="javascript:void(0)" onclick="delete_detail(<?php echo $value['id'];?>)"><i class="fa fa-trash-o"></i></button>

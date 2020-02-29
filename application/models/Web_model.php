@@ -22,6 +22,7 @@ class Web_model extends CI_Model {
 		$this->db->where('category', $categoryName);
 		$this->db->from('tour');
 		$this->db->join('tour_img', 'tour.id = tour_img.tour_id');
+		$this->db->join('feature_img', 'tour.id = feature_img.tour_id');
 		$this->db->group_by('tour.id');
 		$data=$this->db->get();
 		return $data->result_array();
@@ -71,6 +72,15 @@ class Web_model extends CI_Model {
 		$this->db->select('*');
 		$this->db->from('homeslider');
 		$this->db->where('status', '1');
+		$rec=$this->db->get();
+		return $rec->result_array();
+
+	}
+	function GetAvgReview(){
+		$this->db->select('tour_id,avg(rating)');
+		$this->db->from('review_tb');
+		$this->db->where('status', '1');
+		$this->db->group_by('tour_id');
 		$rec=$this->db->get();
 		return $rec->result_array();
 

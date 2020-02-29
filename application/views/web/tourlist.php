@@ -31,7 +31,7 @@
 											</h4></div>
 											<span class="post_date"><?php echo $value['totalDaysNight'] ?></span>
 											<div class="description">
-												<p><?php echo $value['content'] ?></p>
+												<p><?php echo substr($value['content'],0,75) ?></p>
 											</div>
 										</div>
 										<div class="read_more">

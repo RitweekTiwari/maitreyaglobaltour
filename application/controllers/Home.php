@@ -40,7 +40,8 @@ class Home extends CI_Controller {
         $data['page'] = 'Home';
         $data['category'] = $this->web_model->tourCategory('category');
         $data['tourData'] = $this->web_model->tourData();
-     
+        $data['avgReview'] = $this->web_model->GetAvgReview();
+        
         $data['heading'] = $this->common_model->select('heading');
         $data['flash'] = $this->common_model->select('flash');
         $data['aboutData']=$this->common_model->select_single_row('about');
@@ -116,6 +117,13 @@ class Home extends CI_Controller {
         $data['page'] = 'Tour Details';
         $data['itinerary']= $this->web_model->itineraryData('itinerary',$tourId);
         $data['tourdata'] = $this->web_model->tourTableData($tourId);
+        $tourData = $this->web_model->tourData();
+        foreach ($tourData as  $value) {
+            $range = self::range($value['startingDate'], $value['endingDate']);
+           if(in_array(date('M'), $range)){
+            $data['sessionTourData'][] =  $value;
+           }
+        }
         $data['galleryImage'] = $this->web_model->galleryImageById($tourId);
         $data['review'] = $this->web_model->review($tourId);
         $data['flash'] = $this->common_model->select('flash');
@@ -151,6 +159,8 @@ class Home extends CI_Controller {
         $data = array();
         $data['page'] = 'Tour Details';
         $data['categoryTourData'] = $this->web_model->byCategoryTourData($categoryName);
+        
+        $data['flash'] = $this->common_model->select('flash');
         // echo "<pre>";
         // print_r($data['categoryTourData']); exit();
         $data['setting'] = $this->common_model->select_single_row('setting');

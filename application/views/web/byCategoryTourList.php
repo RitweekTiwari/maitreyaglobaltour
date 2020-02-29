@@ -19,7 +19,7 @@
 									<div class="item_border item-product">
 										<div class="post_images">
 											<a href="#">
-												<img src="<?php echo base_url('/uploads/tourImg/')?><?php echo $value['featureImg'] ?>" alt="image" width="950" height="700">
+												<img src="<?php echo base_url('/uploads/tourImg/')?><?php echo $value['image'] ?>" alt="image" width="950" height="700">
 											</a>
 										
 										</div>

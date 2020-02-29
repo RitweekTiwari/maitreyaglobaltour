@@ -99,18 +99,15 @@
 								<div class="wrapper_content">
 									<div class="post_title">
 										<h4>
-											<a href="#" rel="bookmark"><?php echo $value['title'] ?></a>
+											<a href="<?php echo base_url('home/tourdetail/').$value['tour_id'] ?>" rel="bookmark"><?php echo $value['title'] ?></a>
 										</h4>
 									</div>
 									<span class="post_date"><?php echo $value['totalDaysNight'] ?></span>
-									<p><?php echo $value['content'] ?></p>
+									<p><?php echo substr($value['content'],0,75) ?></p>
 								</div>
 							</div>
 							<div class="read_more">
-								<div class="item_rating">
-									<i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i
-										class="fa fa-star"></i><i class="fa fa-star"></i>
-								</div>
+							
 								<a href="<?php echo base_url('home/tourdetail/').$value['tour_id'] ?>"
 									class="read_more_button">VIEW MORE
 									<i class="fa fa-long-arrow-right"></i></a>

@@ -65,7 +65,7 @@
 									<?php endforeach ?>
 								</ul>
 							</div>
-							<div class="clear"></div>
+							<div class="clear"><?php echo $tourdata['content'] ?></div>
 							<div class="single-tour-tabs wc-tabs-wrapper">
 							<?php 
                       if($this->session->flashdata('success'))
@@ -108,8 +108,8 @@
 									<div role="tabpanel" class="tab-pane single-tour-tabs-panel single-tour-tabs-panel--reviews panel entry-content wc-tab" id="tab-reviews">
 										<div id="reviews" class="travel_tour-Reviews">
 											<div id="comments">
-												<h2 class="travel_tour-Reviews-title">1 review for
-													<span>Kiwiana Panorama</span></h2>
+												<h2 class="travel_tour-Reviews-title"><?php echo count($review);?> review for
+													<span><?php echo $tourdata['title'] ?></span></h2>
 													
 												<ol class="commentlist">
 												<?php foreach ($review as $value): ?>
@@ -200,95 +200,32 @@
 							</div>
 							<div class="related tours">
 								<h2>Related Tours</h2>
-								<ul class="tours products wrapper-tours-slider">
+								<ul class="tours products wrapper-tours-slider"><?php foreach ($sessionTourData as $value):?>
 									<li class="item-tour col-md-4 col-sm-6 product">
 										<div class="item_border item-product">
 											<div class="post_images">
 												<a href="#">
 													
-													<img width="430" height="305" src="<?php echo base_url()?>asset/images/tour/430x305/tour-1.jpg" alt="Discover Brazil" title="Discover Brazil">
+													<img width="430" height="305" src="<?php echo base_url('/uploads/tourImg/')?><?php echo $value['image'] ?>" alt="Discover Brazil" title="Discover Brazil">
 												</a>
 												
 											</div>
 											<div class="wrapper_content">
 												<div class="post_title"><h4>
-													<a href="#" rel="bookmark">Discover Brazil</a>
+													<a href="#" rel="bookmark"><?php echo $value['title'] ?></a>
 												</h4></div>
-												<span class="post_date">5 DAYS 4 NIGHTS</span>
+												<span class="post_date"><?php echo $value['totalDaysNight'] ?></span>
 												<div class="description">
-													<p>Aliquam lacus nisl, viverra convallis sit amet&nbsp;penatibus nunc&nbsp;luctus</p>
+													<p><?php substr($value['content'],0,75) ?></p>
 												</div>
 											</div>
 											<div class="read_more">
-												<div class="item_rating">
-													<i class="fa fa-star"></i>
-													<i class="fa fa-star"></i>
-													<i class="fa fa-star"></i>
-													<i class="fa fa-star"></i>
-													<i class="fa fa-star-o"></i>
-												</div>
-												<a rel="nofollow" href="#" class="button product_type_tour_phys add_to_cart_button">Read more</a>
+												
+												<a rel="nofollow" href="<?php echo base_url('home/tourdetail/').$value['tour_id'] ?>" class="button product_type_tour_phys add_to_cart_button">Read more</a>
 											</div>
 										</div>
 									</li>
-									<li class="item-tour col-md-4 col-sm-6 product">
-										<div class="item_border item-product">
-											<div class="post_images">
-												<a href="#">
-													<img width="430" height="305" src="<?php echo base_url()?>asset/images/tour/430x305/tour-2.jpg" alt="Discover Brazil" title="Discover Brazil">
-												</a>
-											
-											</div>
-											<div class="wrapper_content">
-												<div class="post_title"><h4>
-													<a href="#" rel="bookmark">Kiwiana Panorama</a>
-												</h4></div>
-												<span class="post_date">5 DAYS 4 NIGHTS</span>
-												<div class="description">
-													<p>Aliquam lacus nisl, viverra convallis sit amet&nbsp;penatibus nunc&nbsp;luctus</p>
-												</div>
-											</div>
-											<div class="read_more">
-												<div class="item_rating">
-													<i class="fa fa-star"></i>
-													<i class="fa fa-star"></i>
-													<i class="fa fa-star"></i>
-													<i class="fa fa-star"></i>
-													<i class="fa fa-star-o"></i>
-												</div>
-												<a rel="nofollow" href="#" class="button product_type_tour_phys add_to_cart_button">Read more</a>
-											</div>
-										</div>
-									</li>
-									<li class="item-tour col-md-4 col-sm-6 product">
-										<div class="item_border item-product">
-											<div class="post_images">
-												<a href="#">
-													<img width="430" height="305" src="<?php echo base_url()?>asset/images/tour/430x305/tour-3.jpg" alt="Discover Brazil" title="Discover Brazil">
-												</a>
-										
-											</div>
-											<div class="wrapper_content">
-												<div class="post_title"><h4>
-													<a href="#" rel="bookmark">Anchorage to Quito</a>
-												</h4></div>
-												<span class="post_date">5 DAYS 4 NIGHTS</span>
-												<div class="description">
-													<p>Aliquam lacus nisl, viverra convallis sit amet&nbsp;penatibus nunc&nbsp;luctus</p>
-												</div>
-											</div>
-											<div class="read_more">
-												<div class="item_rating">
-													<i class="fa fa-star"></i>
-													<i class="fa fa-star"></i>
-													<i class="fa fa-star"></i>
-													<i class="fa fa-star"></i>
-													<i class="fa fa-star-o"></i>
-												</div>
-												<a rel="nofollow" href="#" class="button product_type_tour_phys add_to_cart_button">Read more</a>
-											</div>
-										</div>
-									</li>
+									<?php endforeach ?>
 								</ul>
 							</div>
 						</div>
